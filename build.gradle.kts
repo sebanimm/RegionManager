@@ -1,7 +1,6 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import io.papermc.paperweight.tasks.RemapJar
-import org.gradle.configurationcache.extensions.capitalized
 import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
+import java.net.URI
 import java.util.*
 
 plugins {
@@ -20,17 +19,15 @@ java {
 repositories {
     mavenCentral()
     mavenLocal()
+    maven { url = URI("https://repo.codemc.org/repository/maven-public/") }
 }
 
 dependencies {
     implementation(kotlin("stdlib"))
     implementation(kotlin("reflect"))
     paperweight.paperDevBundle(libs.versions.paper)
-
-//    implementation("io.github.monun:kommand-api:latest.release")
-//    implementation("io.github.monun:tap-api:latest.release")
-//    implementation("io.github.monun:invfx-api:latest.release")
-//    implementation("io.github.monun:heartbeat-coroutines:latest.release")
+    compileOnly("dev.jorel:commandapi-bukkit-core:9.5.0")
+    implementation("com.github.stefvanschie.inventoryframework:IF:0.10.17")
 }
 
 extra.apply {
@@ -94,7 +91,7 @@ tasks {
             }
 
             doLast {
-                val plugins = rootProject.file(".server/plugins-$name")
+                val plugins = file("G:\\minecaft\\plugins")
                 val update = plugins.resolve("update")
 
                 copy {
@@ -130,9 +127,9 @@ tasks {
 //            File(update, "RELOAD").delete()
 //        }
 //    }
-//
-//    registerJar("dev", jar)
-//    registerJar("reobf", reobfJar)
+
+    registerJar("dev", false)
+//    registerJar("reobf", true)
 }
 
 idea {

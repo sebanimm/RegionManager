@@ -1,4 +1,4 @@
-package io.github.lepitar.BlockPrevent.regions
+package io.github.lepitar.blockPrevent.regions
 
 import org.bukkit.entity.Player
 import java.util.UUID

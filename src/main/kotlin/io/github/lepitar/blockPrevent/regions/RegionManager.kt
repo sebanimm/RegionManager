@@ -1,13 +1,11 @@
-package io.github.lepitar.BlockPrevent.regions
+package io.github.lepitar.blockPrevent.regions
 
 import com.google.common.collect.ImmutableList
-import io.github.lepitar.BlockPrevent.plugin.BlockPreventPlugin
+import io.github.lepitar.blockPrevent.plugin.BlockPreventPlugin
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.World
 import org.bukkit.configuration.ConfigurationSection
-import org.bukkit.configuration.file.YamlConfiguration
-import java.io.File
 import java.util.UUID
 
 class RegionManager(plugin: BlockPreventPlugin) {

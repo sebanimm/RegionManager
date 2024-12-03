@@ -1,16 +1,15 @@
-package io.github.lepitar.BlockPrevent.plugin
+package io.github.lepitar.blockPrevent.plugin
 
 import dev.jorel.commandapi.CommandAPICommand
 import dev.jorel.commandapi.arguments.ArgumentSuggestions
 import dev.jorel.commandapi.arguments.StringArgument
 import dev.jorel.commandapi.executors.CommandExecutor
-import io.github.lepitar.BlockPrevent.regions.Region
-import io.github.lepitar.BlockPrevent.regions.RegionSize
-import io.github.lepitar.BlockPrevent.regions.Regions
+import io.github.lepitar.blockPrevent.regions.Region
+import io.github.lepitar.blockPrevent.regions.RegionSize
+import io.github.lepitar.blockPrevent.regions.Regions
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.TextDecoration
-import org.bukkit.Material
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin

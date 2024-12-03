@@ -1,7 +1,7 @@
-package io.github.lepitar.BlockPrevent.regions
+package io.github.lepitar.blockPrevent.regions
 
 import com.google.common.collect.ImmutableSet
-import io.github.lepitar.BlockPrevent.plugin.BlockPreventPlugin
+import io.github.lepitar.blockPrevent.plugin.BlockPreventPlugin
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Bukkit

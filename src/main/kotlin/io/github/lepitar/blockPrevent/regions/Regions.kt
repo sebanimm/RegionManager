@@ -1,10 +1,9 @@
-package io.github.lepitar.BlockPrevent.regions
+package io.github.lepitar.blockPrevent.regions
 
-import io.github.lepitar.BlockPrevent.plugin.BlockPreventPlugin
+import io.github.lepitar.blockPrevent.plugin.BlockPreventPlugin
 import org.bukkit.Location
 import org.bukkit.block.Block
 import org.bukkit.entity.Entity
-import org.bukkit.entity.Player
 
 object Regions {
     lateinit var manager: RegionManager

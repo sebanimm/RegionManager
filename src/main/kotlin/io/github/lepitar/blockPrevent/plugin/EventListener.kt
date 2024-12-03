@@ -1,4 +1,4 @@
-package io.github.lepitar.BlockPrevent.plugin
+package io.github.lepitar.blockPrevent.plugin
 
 import com.github.stefvanschie.inventoryframework.gui.GuiItem
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui
@@ -7,19 +7,17 @@ import com.github.stefvanschie.inventoryframework.pane.Pane
 import com.github.stefvanschie.inventoryframework.pane.PatternPane
 import com.github.stefvanschie.inventoryframework.pane.StaticPane
 import com.github.stefvanschie.inventoryframework.pane.util.Pattern
-import io.github.lepitar.BlockPrevent.regions.areaAt
-import io.github.lepitar.BlockPrevent.regions.isBreakable
-import io.github.lepitar.BlockPrevent.regions.regionArea
+import io.github.lepitar.blockPrevent.regions.areaAt
+import io.github.lepitar.blockPrevent.regions.isBreakable
+import io.github.lepitar.blockPrevent.regions.regionArea
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.TextColor
 import net.kyori.adventure.text.format.TextDecoration
-import net.kyori.adventure.util.RGBLike
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.block.Container
 import org.bukkit.block.Dispenser
-import org.bukkit.entity.Entity
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Interaction
 import org.bukkit.entity.Player
@@ -28,7 +26,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.*
 import org.bukkit.event.entity.EntityExplodeEvent
-import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.inventory.InventoryMoveItemEvent
 import org.bukkit.event.player.PlayerBucketEmptyEvent
 import org.bukkit.event.player.PlayerBucketFillEvent

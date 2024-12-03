@@ -1,4 +1,4 @@
-package io.github.lepitar.BlockPrevent.regions
+package io.github.lepitar.blockPrevent.regions
 
 enum class RegionSize(val size: Int) {
     SMALL(7),

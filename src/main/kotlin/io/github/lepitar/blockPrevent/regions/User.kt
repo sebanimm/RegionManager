@@ -1,13 +1,11 @@
 package io.github.lepitar.blockPrevent.regions
 
 import org.bukkit.entity.Player
-import java.util.UUID
+import java.util.*
 
 interface User {
     val uniqueId: UUID
-
     val name: String
-
     val bukkitPlayer: Player?
 
     val isOnline: Boolean

@@ -6,20 +6,23 @@ import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.World
 import org.bukkit.configuration.ConfigurationSection
-import java.util.UUID
+import java.util.*
 
 class RegionManager(plugin: BlockPreventPlugin) {
-    val regions: List<Region>
+    private val regions: List<Region>
         get() = ImmutableList.copyOf(_regions)
 
     private val _regions = mutableListOf<Region>()
 
     fun registerNewRegion(region: Region): Boolean {
         val overlap = checkOverlaps(region)
+
         if (overlap) {
             return false
         }
+
         _regions.add(region)
+
         return true
     }
 
@@ -35,10 +38,10 @@ class RegionManager(plugin: BlockPreventPlugin) {
         return _regions.find { it.world == loc.world && it.contains(loc) }
     }
 
-    fun checkOverlaps(region: Region): Boolean {
+    private fun checkOverlaps(region: Region): Boolean {
         var isOverlap = false
-        _regions.forEach { _region ->
-            val _isOverlap = _region.overlaps(region)
+        _regions.forEach {
+            val _isOverlap = it.overlaps(region)
             if (_isOverlap) {
                 isOverlap = true
                 return@forEach
@@ -72,7 +75,7 @@ class RegionManager(plugin: BlockPreventPlugin) {
         }
     }
 
-    fun saveRegion(config: ConfigurationSection, region: Region) {
+    private fun saveRegion(config: ConfigurationSection, region: Region) {
         config.set("location.world", region.world.name)
         config.set("location.x", region.loc.x)
         config.set("location.y", region.loc.y)
@@ -85,7 +88,7 @@ class RegionManager(plugin: BlockPreventPlugin) {
         config.set("permissionUsers", permissionList)
     }
 
-    fun loadRegion(config: ConfigurationSection): Region? {
+    private fun loadRegion(config: ConfigurationSection): Region? {
         val worldName = config.getString("location.world") ?: return null
         val world = Bukkit.getWorld(worldName) ?: return null
 
@@ -103,9 +106,8 @@ class RegionManager(plugin: BlockPreventPlugin) {
         val region = Region(location, type, owner)
 
         val permissionUsers = config.getStringList("permissionUsers")
-        permissionUsers.mapNotNull { UUID.fromString(it) }.forEach { region.permissionUser.add(it) }
+        permissionUsers.mapNotNull { UUID.fromString(it) }.forEach { region.permissionUser += it }
 
         return region
     }
-
 }

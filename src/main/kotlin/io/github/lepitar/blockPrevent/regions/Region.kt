@@ -7,6 +7,7 @@ import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.Material
+import org.bukkit.World
 import org.bukkit.block.Block
 import org.bukkit.entity.BlockDisplay
 import org.bukkit.entity.Interaction
@@ -21,18 +22,17 @@ class Region(val loc: Location, val type: RegionSize, val owner: Player) {
     private val startZ = loc.blockZ + type.size
     private val endZ = loc.blockZ - type.size
 
-    private val minX: Int = min(startX, endX)
-    private val maxX: Int = max(startX, endX)
-    private val minZ: Int = min(startZ, endZ)
-    private val maxZ: Int = max(startZ, endZ)
+    private val minX = min(startX, endX)
+    private val maxX = max(startX, endX)
+    private val minZ = min(startZ, endZ)
+    private val maxZ = max(startZ, endZ)
     private val minY = loc.blockY - 1
     private val maxY = minY + 30
 
-    private val _permissionUser: MutableSet<UUID> = mutableSetOf<UUID>(owner.uniqueId)
+    private val _permissionUser = mutableSetOf(owner.uniqueId)
 
-    val permissionUser
-        get() = ImmutableSet.copyOf(_permissionUser)
-    val world = loc.world
+    val permissionUser: ImmutableSet<UUID> get() = ImmutableSet.copyOf(_permissionUser)
+    val world: World = loc.world
     lateinit var regionCore: BlockDisplay
     lateinit var regionInteraction: Interaction
 
@@ -49,7 +49,7 @@ class Region(val loc: Location, val type: RegionSize, val owner: Player) {
                     val block = loc.world.getBlockAt(x, minY, z)
                     block.type = Material.YELLOW_CONCRETE
                     //울타리 가운데 제외
-                    if (x in loc.blockX-1..loc.blockX+1 || z in loc.blockZ-1..loc.blockZ+1) continue
+                    if (x in loc.blockX - 1..loc.blockX + 1 || z in loc.blockZ - 1..loc.blockZ + 1) continue
                     val fence = loc.world.getBlockAt(x, minY + 1, z)
                     fence.type = Material.OAK_FENCE
                 } else {
@@ -91,13 +91,13 @@ class Region(val loc: Location, val type: RegionSize, val owner: Player) {
                 x in minX..maxX && z in minZ..maxZ
     }
 
-    fun overlaps(
+    private fun overlaps(
         minX: Int,
         minY: Int,
         minZ: Int,
         maxX: Int,
         maxY: Int,
-        maxZ: Int
+        maxZ: Int,
     ): Boolean {
         return this.minX <= maxX && this.maxX >= minX && this.minY <= maxY && this.maxY >= minY && this.minZ <= maxZ && this.maxZ >= minZ
     }
